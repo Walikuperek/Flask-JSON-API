@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import List
 
-from app.models import BlogPost
+from .models import BlogPost
 
 
 @dataclass
@@ -45,7 +45,7 @@ class PostRepository(ABC):
         pass
 
 
-class BlogPostRepository(PostRepository):
+class InMemoryBlogPostRepository(PostRepository):
     def __init__(self):
         self.posts = []
 
@@ -84,4 +84,4 @@ class BlogPostRepository(PostRepository):
         return True
 
 
-post_repo = BlogPostRepository()
+post_repo = InMemoryBlogPostRepository()
